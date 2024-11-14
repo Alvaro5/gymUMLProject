@@ -1,9 +1,6 @@
 package fr.efrei;
 
-import fr.efrei.domain.Coach;
-import fr.efrei.domain.Customer;
-import fr.efrei.domain.Employee;
-import fr.efrei.domain.Session;
+import fr.efrei.domain.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -45,5 +42,16 @@ public class Main {
                 .build();
 
         System.out.println(coach.toString());
+
+        Receptionist receptionist = (Receptionist) new Receptionist.ReceptionistBuilder().setHourlyRate(18.23)
+                .setWorkingHours(null)
+                .setBank_details("RIB")
+                .setInHolydays(false)
+                .setFirstName("Anna")
+                .setId(789)
+                .setLastName("io")
+                .build();
+
+        System.out.println(receptionist.toString());
     }
 }
