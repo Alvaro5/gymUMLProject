@@ -8,8 +8,9 @@ public class Coach extends Employee{
     private String workingHours;
     private boolean[] availability = new boolean[MAX_WORKING_HOURS];
 
-    public Coach(){}
-    public Coach(CoachBuilder builder) {
+    private Coach() {}
+
+    private Coach(CoachBuilder builder) {
         super(builder);
         this.sport = builder.sport;
         this.workingHours = builder.workingHours;

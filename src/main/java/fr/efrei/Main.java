@@ -2,25 +2,41 @@ package fr.efrei;
 
 import fr.efrei.domain.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Main {
     public static void main(String[] args) {
-        Customer customer = new Customer.Builder().setFirstName("Alvaro")
+        Member member1 = new Member.Builder().setMemberID(1)
+                .setFirstName("Alvaro")
                 .setLastName("Serero")
                 .setAge(19)
-                .setId(1)
-                .setMembershipStatus("active")
+                .setEmail("alvaroserero@gmail.com")
+                .setPhoneNumber("+33 7 62 94 72 84")
+                .setMembershipStatus(Member.MembershipStatus.ACTIVE)
                 .build();
 
-        System.out.println(customer.toString());
+        System.out.println(member1);
+
+        Member member2 = new Member.Builder().setMemberID(2)
+                .setFirstName("Blandine")
+                .setLastName("Lecry")
+                .setAge(20)
+                .setEmail("blandine@gmail.com")
+                .setPhoneNumber("+33 7 23 53 90 54")
+                .setMembershipStatus(Member.MembershipStatus.EXPIRED)
+                .build();
+
+        System.out.println(member2);
 
         Session session = new Session.Builder()
                 .setCoach(true)
                 .setSport("spin")
-                .setDate("27-10-2024")
-                .setTime("10:00")
+                .setDate(LocalDate.parse("27-10-2024"))
+                .setTime(LocalTime.parse("10:00"))
                 .build();
 
-        boolean addCust = session.addCustomer(customer);
+        boolean addCust = session.addMember(member1);
         System.out.println(session.toString());
 
         Employee employee = new Employee.EmployeeBuilder().setBank_details("RIB")

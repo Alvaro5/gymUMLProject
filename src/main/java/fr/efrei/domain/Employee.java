@@ -4,16 +4,17 @@ public class Employee {
     private int id;
     private String firstName;
     private String lastName;
-    private boolean inHolydays;
-    private String bank_details;
+    private boolean onRestDay;
+    private String bankDetails;
 
-    public Employee(){}
-    public Employee(EmployeeBuilder builder) {
-        this.id = id;
+    private Employee() {}
+
+    private Employee(EmployeeBuilder builder) {
+        this.id = builder.id;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
-        this.inHolydays = builder.inHolydays;
-        this.bank_details = builder.bank_details;
+        this.onRestDay = builder.onRestDay;
+        this.bankDetails = builder.bankDetails;
     }
 
     public int getId() {
@@ -28,12 +29,12 @@ public class Employee {
         return lastName;
     }
 
-    public boolean isInHolydays() {
-        return inHolydays;
+    public boolean isOnRestDay() {
+        return onRestDay;
     }
 
-    public String getBank_details() {
-        return bank_details;
+    public String getBankDetails() {
+        return bankDetails;
     }
 
     @Override
@@ -42,8 +43,8 @@ public class Employee {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", inHolydays=" + inHolydays +
-                ", bank_details='" + bank_details + '\'' +
+                ", onRestDay=" + onRestDay +
+                ", bankDetails='" + bankDetails + '\'' +
                 '}';
     }
 
@@ -51,8 +52,8 @@ public class Employee {
         private int id;
         private String firstName;
         private String lastName;
-        private boolean inHolydays;
-        private String bank_details;
+        private boolean onRestDay;
+        private String bankDetails;
 
         public EmployeeBuilder setId(int id) {
             this.id = id;
@@ -67,12 +68,12 @@ public class Employee {
             this.lastName = lastName;
             return this;
         }
-        public EmployeeBuilder setInHolydays(boolean inHolydays) {
-            this.inHolydays = inHolydays;
+        public EmployeeBuilder setOnRestDay(boolean onRestDay) {
+            this.onRestDay = onRestDay;
             return this;
         }
-        public EmployeeBuilder setBank_details(String bank_details) {
-            this.bank_details = bank_details;
+        public EmployeeBuilder setBank_details(String bankDetails) {
+            this.bankDetails = bankDetails;
             return this;
         }
 

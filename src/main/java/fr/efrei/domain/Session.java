@@ -1,15 +1,19 @@
 package fr.efrei.domain;
 
+import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Session {
     private boolean coach;
     private String sport;
-    private String date;
-    private String time;
-    private List<Customer> listCustomers = new ArrayList<>();
+    private LocalDate date;
+    private LocalTime time;
+    private List<Member> listMembers = new ArrayList<>();
     private static final int MAX_CAPACITY = 5;
+
+    private Session() {
+    }
 
     private Session(Builder builder) {
         this.coach = builder.coach;
@@ -26,21 +30,21 @@ public class Session {
         return sport;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public String getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public List<Customer> getListCustomers() {
-        return listCustomers;
+    public List<Member> getListCustomers() {
+        return listMembers;
     }
 
-    public boolean addCustomer(Customer customer){
-        if(MAX_CAPACITY > listCustomers.size()){
-            listCustomers.add(customer);
+    public boolean addCustomer(Member customer){
+        if(MAX_CAPACITY > listMembers.size()){
+            listMembers.add(customer);
             return true;
         }
         else {
@@ -56,15 +60,17 @@ public class Session {
                 ", sport='" + sport + '\'' +
                 ", date=" + date +
                 ", startSession=" + time +
-                ", listCustomers=" + listCustomers +
+                ", listCustomers=" + listMembers +
                 '}';
     }
 
     public static class Builder{
         private boolean coach;
         private String sport;
-        private String date;
-        private String time;
+        private LocalDate date;
+        private LocalTime time;
+        private List<Member > listCustomers = new ArrayList<>();
+
 
         public Builder setCoach(boolean coach) {
             this.coach = coach;
@@ -76,12 +82,12 @@ public class Session {
             return this;
         }
 
-        public Builder setDate(String date) {
+        public Builder setDate(LocalDate date) {
             this.date = date;
             return this;
         }
 
-        public Builder setTime(String time) {
+        public Builder setTime(LocalTime time) {
             this.time = time;
             return this;
         }

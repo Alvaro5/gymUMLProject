@@ -4,7 +4,7 @@ import fr.efrei.domain.Employee;
 import fr.efrei.util.Helper;
 
 public class EmployeeFactory {
-    public static Employee buildEmployee (int id, String firstName, String lastName, boolean inHolydays, String bank_details){
+    public static Employee buildEmployee (int id, String firstName, String lastName, boolean onRestDAy, String bankDetails){
         if(Helper.isNullOrEmpty(String.valueOf(id)) || Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(firstName)){
             return null;
         }
@@ -12,12 +12,12 @@ public class EmployeeFactory {
         return new Employee.EmployeeBuilder().setId(id)
                 .setLastName(lastName)
                 .setFirstName(firstName)
-                .setInHolydays(inHolydays)
-                .setBank_details(bank_details)
+                .setOnRestDay(onRestDAy)
+                .setBank_details(bankDetails)
                 .build();
     }
 
-    public static Employee buildEmployee (String firstName, String lastName, boolean inHolydays, String bank_details){
+    public static Employee buildEmployee (String firstName, String lastName, boolean onRestDAy, String bankDetails){
         if(Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(firstName)){
             return null;
         }
@@ -26,8 +26,8 @@ public class EmployeeFactory {
         return new Employee.EmployeeBuilder().setId(id)
                 .setLastName(lastName)
                 .setFirstName(firstName)
-                .setInHolydays(inHolydays)
-                .setBank_details(bank_details)
+                .setOnRestDay(onRestDAy)
+                .setBank_details(bankDetails)
                 .build();
     }
 
