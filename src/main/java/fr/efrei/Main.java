@@ -43,8 +43,11 @@ public class Main {
 
         System.out.println(member2);
 
+
         // Testing of the MemberFactory class
-        Member member3 = MemberFactory.buildMember(3, "Alvaro", "Serero", 20, "alvaroserero@gmail.com", "+33 7 62 94 72 84", "inactive", "monthly", LocalDate.now(), LocalDate.now().plusDays(1));
+        LocalDate today = LocalDate.now();
+        LocalDate inAMonth = LocalDate.now().plusDays(30);
+        Member member3 = MemberFactory.buildMember(3, "Alvaro", "Serero", 20, "alvaroserero@gmail.com", "+33 7 62 94 72 84", "inactive", "monthly", today, inAMonth);
         System.out.println(member3);
 
 

@@ -23,7 +23,7 @@ public class Helper {
     }
 
     public static boolean endBeforeStart(LocalDate start, LocalDate end) {
-        return start.isBefore(end);
+        return end.isBefore(start);
     }
 
     public static int generateId() {
