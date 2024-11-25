@@ -4,9 +4,12 @@ import java.util.Arrays;
 
 public class Coach extends Employee{
     private static final int MAX_WORKING_HOURS = 10;
-    private String sport;
-    private String workingHours;
+    private SportType sportType ;
+    private double hourlyRate;
     private boolean[] availability = new boolean[MAX_WORKING_HOURS];
+    public enum SportType {
+        SPINNING, RUNNING, YOGA, WEIGHTLIFTING, BOXING, PERSONALIZED
+    }
 
     private Coach() {
         super();
@@ -14,17 +17,17 @@ public class Coach extends Employee{
 
     private Coach(CoachBuilder builder) {
         super(builder);
-        this.sport = builder.sport;
-        this.workingHours = builder.workingHours;
+        this.sportType = builder.sportType;
+        this.hourlyRate = builder.hourlyRate;
         this.availability = builder.availability;
     }
 
-    public String getSport() {
-        return sport;
+    public SportType getSpeciality() {
+        return sportType;
     }
 
-    public String getWorkingHours() {
-        return workingHours;
+    public double getWorkingHours() {
+        return hourlyRate;
     }
 
     public boolean[] getAvailability() {
@@ -34,29 +37,31 @@ public class Coach extends Employee{
     @Override
     public String toString() {
         return super.toString() + "Coach{" +
-                "sport='" + sport + '\'' +
-                ", workingHours='" + workingHours + '\'' +
+                "sportType='" + sportType + '\'' +
+                ", workingHours='" + hourlyRate + '\'' +
                 ", availability=" + Arrays.toString(availability) +
                 '}';
     }
 
     public static class CoachBuilder extends Employee.EmployeeBuilder{
-        private String sport;
-        private String workingHours;
+        private SportType sportType;
+        private double hourlyRate;
         private boolean[] availability = new boolean[MAX_WORKING_HOURS];
 
-        public CoachBuilder setSport(String sport) {
-            this.sport = sport;
+        public CoachBuilder setSportType(SportType sportType) {
+            this.sportType = sportType;
             return this;
         }
-        public CoachBuilder setWorkingHours(String workingHours) {
-            this.workingHours = workingHours;
+        public CoachBuilder setHourlyRate(double hourlyRate) {
+            this.hourlyRate = hourlyRate;
             return this;
         }
         public CoachBuilder setAvailability(boolean[] availability) {
             this.availability = availability;
             return this;
         }
+
+
         public Coach build() {
             return new Coach(this);
         }    }
