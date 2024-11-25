@@ -1,19 +1,27 @@
 package fr.efrei;
 
 import fr.efrei.domain.*;
+import fr.efrei.factory.MemberFactory;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class Main {
     public static void main(String[] args) {
+
+        // Testing of the Member class and its Builder
         Member member1 = new Member.Builder().setMemberID(1)
                 .setFirstName("Alvaro")
                 .setLastName("Serero")
                 .setAge(19)
                 .setEmail("alvaroserero@gmail.com")
                 .setPhoneNumber("+33 7 62 94 72 84")
-                .setMembershipStatus(Member.MembershipStatus.ACTIVE)
+                .setMembership(
+                        new Membership.Builder().setMembershipStatus(Membership.MembershipStatus.ACTIVE)
+                            .setEndDate(LocalDate.now().plusDays(1))
+                            .setStartDate(LocalDate.now())
+                            .setPaymentRate(Membership.PaymentRate.DAILY)
+                            .build()
+                )
                 .build();
 
         System.out.println(member1);
@@ -24,11 +32,23 @@ public class Main {
                 .setAge(20)
                 .setEmail("blandine@gmail.com")
                 .setPhoneNumber("+33 7 23 53 90 54")
-                .setMembershipStatus(Member.MembershipStatus.EXPIRED)
+                .setMembership(
+                        new Membership.Builder().setMembershipStatus(Membership.MembershipStatus.EXPIRED)
+                                .setEndDate(LocalDate.now().plusDays(1))
+                                .setStartDate(LocalDate.now())
+                                .setPaymentRate(Membership.PaymentRate.DAILY)
+                                .build()
+                )
                 .build();
 
         System.out.println(member2);
 
+        // Testing of the MemberFactory class
+        Member member3 = MemberFactory.buildMember(3, "Alvaro", "Serero", 20, "alvaroserero@gmail.com", "+33 7 62 94 72 84", "inactive", "monthly", LocalDate.now(), LocalDate.now().plusDays(1));
+        System.out.println(member3);
+
+
+        /*
         Session session = new Session.Builder()
                 .setCoach(true)
                 .setSport("spin")
@@ -68,6 +88,6 @@ public class Main {
                 .setLastName("io")
                 .build();
 
-        System.out.println(receptionist.toString());
+        System.out.println(receptionist.toString());*/
     }
 }

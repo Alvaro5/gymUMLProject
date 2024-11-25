@@ -1,7 +1,6 @@
 package fr.efrei.factory;
 
-import fr.efrei.domain.Customer;
-import fr.efrei.domain.Session;
+import fr.efrei.domain.*;
 import fr.efrei.util.Helper;
 
 import java.time.LocalDate;
@@ -12,7 +11,7 @@ public class SessionFactory {
     private static final LocalTime START_TIME = LocalTime.of(8, 0);
     private static final LocalTime END_TIME = LocalTime.of(22, 0);
 
-    public static Session buildSession(boolean coach, String sport, LocalDate date, LocalTime time, List<Customer> customers) {
+    public static Session buildSession(boolean coach, String sport, LocalDate date, LocalTime time, List<Member> customers) {
         if (Helper.isNullOrEmpty(String.valueOf(coach)) || Helper.isNullOrEmpty(sport)|| Helper.isNullOrEmpty(String.valueOf(date)) || Helper.isNullOrEmpty(String.valueOf(time))){
             return null;
         }

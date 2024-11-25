@@ -42,6 +42,14 @@ public class Membership {
         return endDate;
     }
 
+    public boolean isActive() {
+        // Check if the membership status is ACTIVE and the current date is within the membership period
+        return membershipStatus == MembershipStatus.ACTIVE &&
+                LocalDate.now().isBefore(endDate) &&
+                LocalDate.now().isAfter(startDate);
+    }
+
+
     @Override
     public String toString() {
         return "Membership{" +

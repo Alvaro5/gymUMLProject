@@ -19,7 +19,7 @@ public class Member {
         this.age = builder.age;
         this.email = builder.email;
         this.phoneNumber = builder.phoneNumber;
-        this.membershipStatus = builder.membershipStatus;
+        this.membership = builder.membership;
     }
 
     public int getMemberID() {
@@ -46,9 +46,14 @@ public class Member {
         return phoneNumber;
     }
 
-    public MembershipStatus getMembershipStatus() {
-        return membershipStatus;
+    public Membership getMembership() {
+        return membership;
     }
+
+    public void updateMembership(Membership newMembership) {
+        this.membership = newMembership;
+    }
+
 
     @Override
     public String toString() {
@@ -59,7 +64,7 @@ public class Member {
                 ", age=" + age +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", membershipStatus=" + membershipStatus +
+                ", membershipStatus=" + membership +
                 '}';
     }
 
@@ -70,7 +75,7 @@ public class Member {
         private int age;
         private String email;
         private String phoneNumber;
-        private MembershipStatus membershipStatus;
+        private Membership membership;
 
         public Builder setEmail(String email) {
             this.email = email;
@@ -102,8 +107,8 @@ public class Member {
             return this;
         }
 
-        public Builder setMembershipStatus(MembershipStatus membershipStatus) {
-            this.membershipStatus = membershipStatus;
+        public Builder setMembership(Membership membership) {
+            this.membership = membership;
             return this;
         }
 
@@ -114,7 +119,7 @@ public class Member {
             this.age = member.age;
             this.email = member.email;
             this.phoneNumber = member.phoneNumber;
-            this.membershipStatus = member.membershipStatus;
+            this.membership = member.membership;
             return this;
         }
 

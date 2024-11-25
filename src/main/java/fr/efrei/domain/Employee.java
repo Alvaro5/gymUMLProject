@@ -7,9 +7,9 @@ public class Employee {
     private boolean onRestDay;
     private String bankDetails;
 
-    private Employee() {}
+    public Employee() {}
 
-    private Employee(EmployeeBuilder builder) {
+    Employee(EmployeeBuilder builder) {
         this.id = builder.id;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
