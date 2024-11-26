@@ -11,9 +11,7 @@ public class Coach extends Employee{
         SPINNING, RUNNING, YOGA, WEIGHTLIFTING, BOXING, PERSONALIZED
     }
 
-    private Coach() {
-        super();
-    }
+    private Coach() {}
 
     private Coach(CoachBuilder builder) {
         super(builder);

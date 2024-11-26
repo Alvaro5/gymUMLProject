@@ -60,37 +60,37 @@ public class Main {
                 .build();
 
         boolean addCust = session.addMember(member1);
-        System.out.println(session.toString()); */
+        System.out.println(session.toString());
 
-        Employee employee = new Employee.EmployeeBuilder().setBankDetails("RIB")
+        Employee employee = new Employee.EmployeeBuilder().setBank_details("RIB")
+                .setInHolydays(false)
                 .setFirstName("Anne-Laure")
                 .setLastName("Parguet")
-                .setEmployeeId(123)
-                .setOnRestDay(true)
+                .setId(123)
                 .build();
 
         System.out.println(employee.toString());
 
         Coach coach = (Coach) new Coach.CoachBuilder().setAvailability(null)
-                .setBankDetails("RIB")
-                .setOnRestDay(false)
-                .setEmployeeId(456)
+                .setWorkingHours("10h-18h")
+                .setBank_details("RIB")
+                .setInHolydays(true)
+                .setId(456)
                 .setFirstName("Lea")
                 .setLastName("Petit")
-
                 .build();
 
         System.out.println(coach.toString());
 
         Receptionist receptionist = (Receptionist) new Receptionist.ReceptionistBuilder().setHourlyRate(18.23)
                 .setWorkingHours(null)
-                .setBankDetails("RIB")
-                .setOnRestDay(false)
+                .setBank_details("RIB")
+                .setInHolydays(false)
                 .setFirstName("Anna")
-                .setEmployeeId(789)
+                .setId(789)
                 .setLastName("io")
                 .build();
 
-        System.out.println(receptionist.toString());
+        System.out.println(receptionist.toString());*/
     }
 }
