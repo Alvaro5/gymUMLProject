@@ -2,8 +2,9 @@ package fr.efrei.domain;
 
 public class Employee {
     private int employeeId;
-    private String firstName;
     private String lastName;
+    private String firstName;
+
     private boolean onRestDay;
     private String bankDetails;
 

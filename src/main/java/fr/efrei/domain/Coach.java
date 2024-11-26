@@ -2,13 +2,16 @@ package fr.efrei.domain;
 
 import java.util.Arrays;
 
+import static fr.efrei.domain.Receptionist.MAX_WORKING_HOURS;
+
 public class Coach extends Employee{
-    private static final int MAX_WORKING_HOURS = 10;
+
     private SportType sportType ;
     private double hourlyRate;
+    private static final int MAX_WORKING_HOURS = 10;
     private boolean[] availability = new boolean[MAX_WORKING_HOURS];
     public enum SportType {
-        SPINNING, RUNNING, YOGA, WEIGHTLIFTING, BOXING, PERSONALIZED
+        RUNNING, SPINNING, YOGA, WEIGHTLIFTING, BOXING, PERSONALIZED
     }
 
     private Coach() {}
