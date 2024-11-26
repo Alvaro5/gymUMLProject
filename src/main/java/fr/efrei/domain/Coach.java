@@ -12,7 +12,7 @@ public class Coach extends Employee{
         RUNNING, SPINNING, YOGA, WEIGHTLIFTING, BOXING, PERSONALIZED
     }
 
-    private Coach() {}
+    public Coach() {}
 
     private Coach(CoachBuilder builder) {
         super(builder);
@@ -42,7 +42,7 @@ public class Coach extends Employee{
                 '}';
     }
 
-    public static class CoachBuilder extends Employee.EmployeeBuilder{
+    public static class CoachBuilder extends Employee.EmployeeBuilder<CoachBuilder>{
         private SportType sportType;
         private double hourlyRate;
         private boolean[] availability = new boolean[MAX_WORKING_HOURS];
@@ -60,8 +60,14 @@ public class Coach extends Employee{
             return this;
         }
 
-
+        @Override
         public Coach build() {
             return new Coach(this);
-        }    }
+        }
+        @Override
+        public CoachBuilder self() {
+            return this;
+        }
+
+    }
 }

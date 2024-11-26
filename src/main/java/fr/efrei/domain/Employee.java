@@ -1,6 +1,6 @@
 package fr.efrei.domain;
 
-public class Employee {
+public abstract class Employee {
     private int employeeId;
     private String lastName;
     private String firstName;
@@ -10,7 +10,7 @@ public class Employee {
 
     public Employee() {}
 
-    Employee(EmployeeBuilder builder) {
+    public Employee(EmployeeBuilder<?> builder) {
         this.employeeId = builder.employeeId;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
@@ -49,35 +49,37 @@ public class Employee {
                 '}';
     }
 
-    public static class EmployeeBuilder{
+    public static abstract class EmployeeBuilder<T extends EmployeeBuilder<T>>{
         private int employeeId;
         private String firstName;
         private String lastName;
         private boolean onRestDay;
         private String bankDetails;
 
-        public EmployeeBuilder setEmployeeId(int id) {
+        public T setEmployeeId(int id) {
             this.employeeId = employeeId;
-            return this;
+            return self();
         }
 
-        public EmployeeBuilder setFirstName(String firstName) {
+        public T setFirstName(String firstName) {
             this.firstName = firstName;
-            return this;
+            return self();
         }
-        public EmployeeBuilder setLastName(String lastName) {
+        public T setLastName(String lastName) {
             this.lastName = lastName;
-            return this;
+            return self();
         }
-        public EmployeeBuilder setOnRestDay(boolean onRestDay) {
+        public T setOnRestDay(boolean onRestDay) {
             this.onRestDay = onRestDay;
-            return this;
+            return self();
         }
-        public EmployeeBuilder setBankDetails(String bankDetails) {
+        public T setBankDetails(String bankDetails) {
             this.bankDetails = bankDetails;
-            return this;
+            return self();
         }
 
-        public Employee build() { return new Employee(this); }
+        public abstract T self();
+        public abstract Employee build();
+
     }
 }

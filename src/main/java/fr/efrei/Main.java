@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
+        /*
         // Testing of the Member class and its Builder
         Member member1 = new Member.Builder().setMemberID(1)
                 .setFirstName("Alvaro")
@@ -55,7 +56,7 @@ public class Main {
         // Testing of the MemberRepository class
         IMemberRepository memberRepository = MemberRepository.getRepository();
 
-        /*
+
         Session session = new Session.Builder()
                 .setCoach(true)
                 .setSport("spin")
@@ -66,20 +67,22 @@ public class Main {
         boolean addCust = session.addMember(member1);
         System.out.println(session.toString());
 
-        Employee employee = new Employee.EmployeeBuilder().setBank_details("RIB")
-                .setInHolydays(false)
+        Employee employee = new Employee.EmployeeBuilder().setBankDetails("RIB")
+                .setOnRestDay(false)
                 .setFirstName("Anne-Laure")
                 .setLastName("Parguet")
-                .setId(123)
+                .setEmployeeId(123)
                 .build();
 
-        System.out.println(employee.toString());
+        System.out.println(employee.toString());*/
 
-        Coach coach = (Coach) new Coach.CoachBuilder().setAvailability(null)
-                .setWorkingHours("10h-18h")
-                .setBank_details("RIB")
-                .setInHolydays(true)
-                .setId(456)
+
+        Coach coach = (Coach) new Coach.CoachBuilder().setSportType(Coach.SportType.YOGA)
+                .setHourlyRate(7)
+                .setAvailability(null)
+                .setBankDetails("RIB")
+                .setOnRestDay(true)
+                .setEmployeeId(456)
                 .setFirstName("Lea")
                 .setLastName("Petit")
                 .build();
@@ -88,13 +91,13 @@ public class Main {
 
         Receptionist receptionist = (Receptionist) new Receptionist.ReceptionistBuilder().setHourlyRate(18.23)
                 .setWorkingHours(null)
-                .setBank_details("RIB")
-                .setInHolydays(false)
+                .setBankDetails("RIB")
+                .setOnRestDay(false)
                 .setFirstName("Anna")
-                .setId(789)
+                .setEmployeeId(789)
                 .setLastName("io")
                 .build();
 
-        System.out.println(receptionist.toString());*/
+        System.out.println(receptionist.toString());
     }
 }
