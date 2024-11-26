@@ -8,7 +8,7 @@ public class SessionRepository implements ISessionRepository {
     private static ISessionRepository repository = null;
     private List<Session> sessionList;
 
-    public SessionRepository() {
+    private SessionRepository() {
         sessionList = new ArrayList<>();
     }
 

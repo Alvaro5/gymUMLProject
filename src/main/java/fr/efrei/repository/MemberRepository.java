@@ -9,7 +9,7 @@ public class MemberRepository implements IMemberRepository {
     private static IMemberRepository repository = null;
     private List<Member> memberList;
 
-    public MemberRepository() {
+    private MemberRepository() {
         memberList = new ArrayList<>();
     }
 
