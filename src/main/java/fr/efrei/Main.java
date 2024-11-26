@@ -4,9 +4,6 @@ import fr.efrei.domain.*;
 import fr.efrei.factory.MemberFactory;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -50,50 +47,19 @@ public class Main {
         // Testing of the MemberFactory class
         LocalDate today = LocalDate.now();
         LocalDate inAMonth = LocalDate.now().plusDays(30);
-        Member member3 = MemberFactory.buildMember(3, "Alvaro", "Serero", 20, "alvaroserero@gmail.com", "+33 7 62 94 72 84", "inactive", "monthly", today, inAMonth);
+        Member member3 = MemberFactory.buildMember(3, "Alvaro", "Sererro", 20, "alvaroserero@gmail.com", "+33 7 62 94 72 84", "inactive", "monthly", today, inAMonth);
         System.out.println(member3);
 
-        // Testing of the Session class
 
-        List<Member> listMembersSession = new ArrayList<>();
-        listMembersSession.add(member1);
-        listMembersSession.add(member2);
-        listMembersSession.add(member3);
-
-        Boolean[] workingHours = new Boolean[8];
-
-        Receptionist receptionist = new Receptionist.ReceptionistBuilder()
-                .setId(1)
-                .setBankDetails("P")
-                .setFirstName("sdfe")
-                .setLastName("sdfs")
-                .setOnRestDay(true)
-                .setHourlyRate(11.00)
-                .setWorkingHours(workingHours)
-                .build();
-
-        Coach coach = new Coach.CoachBuilder()
-                .setId(1)
-                .setBankDetails("P")
-                .setFirstName("sdfe")
-                .setLastName("sdfs")
-                .setOnRestDay(false)
-                .setHourlyRate(35.00)
-                .build();
-
+        /*
         Session session = new Session.Builder()
-                .setSessionID(1)
-                .setSportType(Session.SportType.BOXING)
-                .setDate(LocalDate.now())
-                .setTime(LocalTime.now())
-                .setCoach(coach)
-                .setReceptionist(receptionist)
-                .setListMembers(listMembersSession)
+                .setCoach(true)
+                .setSport("spin")
+                .setDate(LocalDate.parse("27-10-2024"))
+                .setTime(LocalTime.parse("10:00"))
                 .build();
 
-        System.out.println(session);
-
-        /*boolean addCust = session.addMember(member1);
+        boolean addCust = session.addMember(member1);
         System.out.println(session.toString());
 
         Employee employee = new Employee.EmployeeBuilder().setBank_details("RIB")
