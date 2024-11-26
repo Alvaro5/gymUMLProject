@@ -2,8 +2,6 @@ package fr.efrei.domain;
 
 import java.util.Arrays;
 
-import static fr.efrei.domain.Receptionist.MAX_WORKING_HOURS;
-
 public class Coach extends Employee{
 
     private SportType sportType ;
