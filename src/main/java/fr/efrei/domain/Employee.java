@@ -18,7 +18,7 @@ public abstract class Employee {
         this.bankDetails = builder.bankDetails;
     }
 
-    public int getId() {
+    public int getEmployeeId() {
         return employeeId;
     }
 
