@@ -72,7 +72,7 @@ public class Employee {
             this.onRestDay = onRestDay;
             return this;
         }
-        public EmployeeBuilder setBank_details(String bankDetails) {
+        public EmployeeBuilder setBankDetails(String bankDetails) {
             this.bankDetails = bankDetails;
             return this;
         }
