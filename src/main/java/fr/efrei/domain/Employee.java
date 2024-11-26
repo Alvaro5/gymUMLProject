@@ -1,16 +1,17 @@
 package fr.efrei.domain;
 
 public class Employee {
-    private int id;
-    private String firstName;
+    private int employeeId;
     private String lastName;
+    private String firstName;
+
     private boolean onRestDay;
     private String bankDetails;
 
     public Employee() {}
 
     Employee(EmployeeBuilder builder) {
-        this.id = builder.id;
+        this.employeeId = builder.employeeId;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
         this.onRestDay = builder.onRestDay;
@@ -18,7 +19,7 @@ public class Employee {
     }
 
     public int getId() {
-        return id;
+        return employeeId;
     }
 
     public String getFirstName() {
@@ -40,7 +41,7 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
+                "id=" + employeeId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", onRestDay=" + onRestDay +
@@ -49,14 +50,14 @@ public class Employee {
     }
 
     public static class EmployeeBuilder{
-        private int id;
+        private int employeeId;
         private String firstName;
         private String lastName;
         private boolean onRestDay;
         private String bankDetails;
 
-        public EmployeeBuilder setId(int id) {
-            this.id = id;
+        public EmployeeBuilder setEmployeeId(int id) {
+            this.employeeId = employeeId;
             return this;
         }
 
@@ -72,7 +73,7 @@ public class Employee {
             this.onRestDay = onRestDay;
             return this;
         }
-        public EmployeeBuilder setBank_details(String bankDetails) {
+        public EmployeeBuilder setBankDetails(String bankDetails) {
             this.bankDetails = bankDetails;
             return this;
         }

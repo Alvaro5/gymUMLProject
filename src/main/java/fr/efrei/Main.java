@@ -49,7 +49,7 @@ public class Main {
         // Testing of the MemberFactory class
         LocalDate today = LocalDate.now();
         LocalDate inAMonth = LocalDate.now().plusDays(30);
-        Member member3 = MemberFactory.buildMember(3, "Alvaro", "Serero", 20, "alvaroserero@gmail.com", "+33 7 62 94 72 84", "inactive", "monthly", today, inAMonth);
+        Member member3 = MemberFactory.buildMember(3, "Alvaro", "Sererro", 20, "alvaroserero@gmail.com", "+33 7 62 94 72 84", "inactive", "monthly", today, inAMonth);
         System.out.println(member3);
 
         // Testing of the MemberRepository class

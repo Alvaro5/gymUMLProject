@@ -5,29 +5,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Session {
-    private boolean coach;
-    private String sport;
+    private static final int MAX_CAPACITY = 5;
+    private int sessionID;
+    private SportType sportType;
     private LocalDate date;
     private LocalTime time;
-    private List<Member> listMembers = new ArrayList<>();
-    private static final int MAX_CAPACITY = 5;
+    private Coach coach;
+    private Receptionist receptionist;
+    private List<Member> listMembers = new ArrayList<>(MAX_CAPACITY);
 
-    private Session() {
+    public enum SportType {
+        SPINNING, RUNNING, YOGA, WEIGHTLIFTING, BOXING, PERSONALIZED
     }
+
+    private Session() {}
 
     private Session(Builder builder) {
-        this.coach = builder.coach;
-        this.sport = builder.sport;
+        this.sessionID = builder.sessionID;
+        this.sportType = builder.sportType;
         this.date = builder.date;
         this.time = builder.time;
+        this.coach = builder.coach;
+        this.receptionist = builder.receptionist;
+        this.listMembers = builder.listMembers;
     }
 
-    public boolean getCoach() {
-        return coach;
+    public int getSessionID() {
+        return sessionID;
     }
 
-    public String getSport() {
-        return sport;
+    public SportType getSportType() {
+        return sportType;
     }
 
     public LocalDate getDate() {
@@ -38,47 +46,49 @@ public class Session {
         return time;
     }
 
-    public List<Member> getListCustomers() {
-        return listMembers;
+    public Coach getCoach() {
+        return coach;
     }
 
-    public boolean addCustomer(Member customer){
-        if(MAX_CAPACITY > listMembers.size()){
-            listMembers.add(customer);
-            return true;
-        }
-        else {
-            System.out.println("The session is full. Please take another session.");
-            return false;
-        }
+    public Receptionist getReceptionist() {
+        return receptionist;
+    }
+
+    public List<Member> getListMembers() {
+        return listMembers;
     }
 
     @Override
     public String toString() {
         return "Session{" +
-                "coach='" + coach + '\'' +
-                ", sport='" + sport + '\'' +
+                "sessionID=" + sessionID +
+                ", sportType=" + sportType +
                 ", date=" + date +
-                ", startSession=" + time +
-                ", listCustomers=" + listMembers +
+                ", time=" + time +
+                ", coach=" + coach +
+                ", receptionist=" + receptionist +
+                ", listMembers=" + listMembers +
                 '}';
     }
 
     public static class Builder{
-        private boolean coach;
-        private String sport;
+
+        private static final int MAX_CAPACITY = 5;
+        private int sessionID;
+        private SportType sportType;
         private LocalDate date;
         private LocalTime time;
-        private List<Member > listCustomers = new ArrayList<>();
+        private Coach coach;
+        private Receptionist receptionist;
+        private List<Member> listMembers = new ArrayList<>(MAX_CAPACITY);
 
-
-        public Builder setCoach(boolean coach) {
-            this.coach = coach;
+        public Builder setSessionID(int sessionID) {
+            this.sessionID = sessionID;
             return this;
         }
 
-        public Builder setSport(String sport) {
-            this.sport = sport;
+        public Builder setSportType(SportType sportType) {
+            this.sportType = sportType;
             return this;
         }
 
@@ -89,6 +99,32 @@ public class Session {
 
         public Builder setTime(LocalTime time) {
             this.time = time;
+            return this;
+        }
+
+        public Builder setCoach(Coach coach) {
+            this.coach = coach;
+            return this;
+        }
+
+        public Builder setReceptionist(Receptionist receptionist) {
+            this.receptionist = receptionist;
+            return this;
+        }
+
+        public Builder setListMembers(List<Member> listMembers) {
+            this.listMembers = listMembers;
+            return this;
+        }
+
+        public Builder copy(Session session) {
+            this.sessionID = session.sessionID;
+            this.date = session.date;
+            this.time = session.time;
+            this.sportType = session.sportType;
+            this.coach = session.coach;
+            this.receptionist = session.receptionist;
+            this.listMembers = session.listMembers;
             return this;
         }
 
