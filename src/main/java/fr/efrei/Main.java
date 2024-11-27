@@ -2,14 +2,13 @@ package fr.efrei;
 
 import fr.efrei.domain.*;
 import fr.efrei.factory.MemberFactory;
-import fr.efrei.repository.*;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        /*
         // Testing of the Member class and its Builder
         Member member1 = new Member.Builder().setMemberID(1)
                 .setFirstName("Alvaro")
@@ -55,7 +54,7 @@ public class Main {
         // Testing of the MemberRepository class
         IMemberRepository memberRepository = MemberRepository.getRepository();
 
-
+        /*
         Session session = new Session.Builder()
                 .setCoach(true)
                 .setSport("spin")
@@ -66,22 +65,20 @@ public class Main {
         boolean addCust = session.addMember(member1);
         System.out.println(session.toString());
 
-        Employee employee = new Employee.EmployeeBuilder().setBankDetails("RIB")
-                .setOnRestDay(false)
+        Employee employee = new Employee.EmployeeBuilder().setBank_details("RIB")
+                .setInHolydays(false)
                 .setFirstName("Anne-Laure")
                 .setLastName("Parguet")
-                .setEmployeeId(123)
+                .setId(123)
                 .build();
 
-        System.out.println(employee.toString());*/
+        System.out.println(employee.toString());
 
-
-        Coach coach = (Coach) new Coach.CoachBuilder().setSportType(Coach.SportType.YOGA)
-                .setHourlyRate(7)
-                .setAvailability(null)
-                .setBankDetails("RIB")
-                .setOnRestDay(true)
-                .setEmployeeId(456)
+        Coach coach = (Coach) new Coach.CoachBuilder().setAvailability(null)
+                .setWorkingHours("10h-18h")
+                .setBank_details("RIB")
+                .setInHolydays(true)
+                .setId(456)
                 .setFirstName("Lea")
                 .setLastName("Petit")
                 .build();
@@ -90,14 +87,13 @@ public class Main {
 
         Receptionist receptionist = (Receptionist) new Receptionist.ReceptionistBuilder().setHourlyRate(18.23)
                 .setWorkingHours(null)
-                .setBankDetails("RIB")
-                .setOnRestDay(false)
+                .setBank_details("RIB")
+                .setInHolydays(false)
                 .setFirstName("Anna")
-                .setEmployeeId(789)
+                .setId(789)
                 .setLastName("io")
                 .build();
 
-        System.out.println(receptionist.toString());
 
     }
 }
