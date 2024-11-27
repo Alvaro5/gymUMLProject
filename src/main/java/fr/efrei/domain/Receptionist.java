@@ -33,7 +33,7 @@ public class Receptionist extends Employee {
                 '}';
     }
 
-    public static class ReceptionistBuilder extends Employee.EmployeeBuilder {
+    public static class ReceptionistBuilder extends Employee.EmployeeBuilder<ReceptionistBuilder> {
         private double hourlyRate;
         private boolean[] workingHours = new boolean[MAX_WORKING_HOURS];
 
@@ -47,8 +47,12 @@ public class Receptionist extends Employee {
             return this;
         }
 
+        @Override
         public Receptionist build() {
             return new Receptionist(this);
         }
-    }
+        @Override
+        public ReceptionistBuilder self() {
+            return this;
+        }    }
 }
