@@ -2,8 +2,7 @@ package fr.efrei;
 
 import fr.efrei.domain.*;
 import fr.efrei.factory.MemberFactory;
-import fr.efrei.repository.IMemberRepository;
-import fr.efrei.repository.MemberRepository;
+import fr.efrei.repository.*;
 
 import java.time.LocalDate;
 
@@ -99,5 +98,6 @@ public class Main {
                 .build();
 
         System.out.println(receptionist.toString());
+
     }
 }
