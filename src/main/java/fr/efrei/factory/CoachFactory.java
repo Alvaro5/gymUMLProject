@@ -6,36 +6,36 @@ import fr.efrei.util.Helper;
 
 public class CoachFactory {
     public static Coach buildCoach(String sportType, double hourlyRate, boolean[] availability, int employeeId, String lastName, String firstName, boolean onRestDay, String bankDetails){
-        if(Helper.isNullOrEmpty(sportType)){
-            System.out.println("sport is incorrect");
+        if (Helper.isNullOrEmpty(sportType)) {
+            System.out.println("sport type is missing");
             return null;
         }
-        if(Helper.isNullOrEmpty(String.valueOf(hourlyRate))){
-            System.out.println("hourly rate is incorrect");
+        if (Helper.isNullOrEmpty(String.valueOf(hourlyRate)) || hourlyRate > 30.00) {
+            System.out.println("hourly rate is missing or incorrect");
             return null;
         }
-        if(Helper.isNullOrEmpty(String.valueOf(availability))){
-            System.out.println("availability is incorrect");
+        if (availability.length == 0) {
+            System.out.println("availability is missing");
             return null;
         }
-        if(Helper.isNullOrEmpty(String.valueOf(employeeId))){
-            System.out.println("employee id is incorrect");
+        if (Helper.isNullOrEmpty(String.valueOf(employeeId))) {
+            System.out.println("employee id is missing");
             return null;
         }
-        if(Helper.isNullOrEmpty(String.valueOf(lastName))){
-            System.out.println("last name is incorrect");
+        if (Helper.isNullOrEmpty(lastName)) {
+            System.out.println("last name is missing");
             return null;
         }
-        if(Helper.isNullOrEmpty(String.valueOf(firstName))){
-            System.out.println("first name is incorrect");
+        if (Helper.isNullOrEmpty(firstName)) {
+            System.out.println("first name is missing");
             return null;
         }
-        if(Helper.isNullOrEmpty(String.valueOf(onRestDay))){
-            System.out.println("rest day is incorrect");
+        if (Helper.isNullOrEmpty(String.valueOf(onRestDay))){
+            System.out.println("rest day is missing");
             return null;
         }
-        if(Helper.isNullOrEmpty(String.valueOf(bankDetails))){
-            System.out.println("bank details are incorrect");
+        if (Helper.isNullOrEmpty(bankDetails) || bankDetails.length() > 34) {
+            System.out.println("bank details are missing or incorrect");
             return null;
         }
         return new Coach.CoachBuilder().setHourlyRate(hourlyRate)
@@ -49,37 +49,37 @@ public class CoachFactory {
                 .build();
     }
 
-    public static Coach coachMember(String sportType, double hourlyRate, boolean[] availability, String lastName, String firstName, boolean onRestDay, String bankDetails) {
+    public static Coach buildCoach(String sportType, double hourlyRate, boolean[] availability, String lastName, String firstName, boolean onRestDay, String bankDetails) {
         if (Helper.isNullOrEmpty(String.valueOf(sportType))) {
-            System.out.println("sport is incorrect");
+            System.out.println("sport is missing");
             return null;
         }
-        if (Helper.isNullOrEmpty(String.valueOf(hourlyRate))) {
-            System.out.println("hourly rate is incorrect");
+        if (Helper.isNullOrEmpty(String.valueOf(hourlyRate)) || hourlyRate > 30.00) {
+            System.out.println("hourly rate is missing");
             return null;
         }
-        if (Helper.isNullOrEmpty(String.valueOf(availability))) {
-            System.out.println("availability is incorrect");
+        if (availability.length == 0) {
+            System.out.println("availability is missing");
             return null;
         }
-
         if (Helper.isNullOrEmpty(String.valueOf(lastName))) {
-            System.out.println("last name is incorrect");
+            System.out.println("last name is missing");
             return null;
         }
         if (Helper.isNullOrEmpty(String.valueOf(firstName))) {
-            System.out.println("first name is incorrect");
+            System.out.println("first name is missing");
             return null;
         }
         if (Helper.isNullOrEmpty(String.valueOf(onRestDay))) {
-            System.out.println("rest day is incorrect");
+            System.out.println("rest day is missing");
             return null;
         }
-        if (Helper.isNullOrEmpty(String.valueOf(bankDetails))) {
-            System.out.println("bank details are incorrect");
+        if (Helper.isNullOrEmpty(bankDetails) || bankDetails.length() > 34) {
+            System.out.println("bank details are missing or incorrect");
             return null;
         }
-         int employeeId = Helper.generateId();
+
+        int employeeId = Helper.generateId();
 
         return new Coach.CoachBuilder().setHourlyRate(hourlyRate)
                 .setSportType(Coach.SportType.valueOf(sportType.toUpperCase()))

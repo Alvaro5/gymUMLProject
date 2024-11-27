@@ -4,7 +4,6 @@ public abstract class Employee {
     private int employeeId;
     private String lastName;
     private String firstName;
-
     private boolean onRestDay;
     private String bankDetails;
 
@@ -57,7 +56,7 @@ public abstract class Employee {
         private String bankDetails;
 
         public T setEmployeeId(int id) {
-            this.employeeId = employeeId;
+            this.employeeId = id;
             return self();
         }
 
