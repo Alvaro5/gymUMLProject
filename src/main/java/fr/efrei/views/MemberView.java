@@ -1,10 +1,9 @@
 package fr.efrei.views;
 
 import fr.efrei.domain.Member;
-import fr.efrei.domain.Membership;
 import fr.efrei.factory.MemberFactory;
 import fr.efrei.repository.IMemberRepository;
-import fr.efrei.repository.MemberRepository;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;

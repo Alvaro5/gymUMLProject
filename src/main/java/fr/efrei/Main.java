@@ -4,8 +4,10 @@ import fr.efrei.domain.*;
 import fr.efrei.factory.MemberFactory;
 import fr.efrei.repository.IMemberRepository;
 import fr.efrei.repository.MemberRepository;
+import fr.efrei.views.MemberView;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -96,5 +98,34 @@ public class Main {
                 .build();
 
         System.out.println(receptionist.toString());*/
+
+        // Main menu
+
+        // Instantiation of the repository and views classes
+        IMemberRepository memberRepository2 = MemberRepository.getRepository();
+        MemberView memberView = new MemberView(memberRepository2);
+
+        String choice;
+        Scanner sc = new Scanner(System.in);
+
+        // Console-based menu using a do-while loop and a switch
+        do {
+            System.out.println("Select an option:");
+            System.out.println("1. Member menu");
+            System.out.println("2. Employee menu");
+            System.out.println("3. Session menu");
+            System.out.println("4. Exit\n");
+
+            choice = sc.nextLine();
+
+            switch (choice) {
+                case "1": memberView.memberMenu(); break;
+                case "2": ;
+                case "3": break;
+                case "4": break;
+                default:
+                    System.out.println("Invalid option");
+            }
+        } while (!choice.equals("4"));
     }
 }
