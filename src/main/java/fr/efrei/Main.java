@@ -4,8 +4,7 @@ import fr.efrei.domain.*;
 import fr.efrei.factory.CoachFactory;
 import fr.efrei.factory.MemberFactory;
 import fr.efrei.factory.ReceptionistFactory;
-import fr.efrei.repository.IMemberRepository;
-import fr.efrei.repository.MemberRepository;
+import fr.efrei.repository.*;
 import fr.efrei.views.MemberView;
 
 import java.time.LocalDate;
@@ -85,6 +84,7 @@ public class Main {
                 .setLastName("io")
                 .build();
 
+
         System.out.println(receptionist);
 
         // Testing of Coach and Receptionist factory classes
@@ -113,8 +113,6 @@ public class Main {
                 .build();
 
         System.out.println(session);
-
-
 
 
         /*// Main menu
