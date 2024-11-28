@@ -45,8 +45,8 @@ public class CoachView {
         System.out.println("Avaibility: ");
         for (boolean b : availability = new boolean[] { Boolean.parseBoolean(sc.next()) });
 
-        Coach coach = CoachFactory.buildCoach(sportType, hourlyRate, availability, employeeId, lastName, firstName, onRestDay, bankDetails);
-            if (coach != null) {
+        Coach coach = CoachFactory.buildCoach(employeeId, lastName, firstName, onRestDay, bankDetails, sportType, hourlyRate, availability);
+        if (coach != null) {
                  coachRepository.create(coach);
             } else {
                 System.out.println("Coach not created");

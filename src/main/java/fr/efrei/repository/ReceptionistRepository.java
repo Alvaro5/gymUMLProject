@@ -12,6 +12,13 @@ public class ReceptionistRepository implements IReceptionistRepository {
         receptionistList = new ArrayList<>();
     }
 
+    public static IReceptionistRepository getRepository() {
+        if (repository == null){
+            repository = new ReceptionistRepository();
+        }
+        return repository;
+    }
+
     @Override
     public Receptionist create(Receptionist r) {
         boolean success = receptionistList.add(r);
