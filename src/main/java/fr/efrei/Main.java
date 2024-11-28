@@ -84,6 +84,7 @@ public class Main {
                 .setLastName("io")
                 .build();
 
+
         System.out.println(receptionist);
 
         // Testing of Coach and Receptionist factory classes
@@ -160,8 +161,6 @@ public class Main {
                 .setReceptionist(receptionist)
                 .setListMembers(members)
                 .build();
-
-        System.out.println("\n" + session);
 
         /*// Main menu
 
