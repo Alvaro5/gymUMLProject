@@ -4,7 +4,7 @@ import fr.efrei.domain.Receptionist;
 import fr.efrei.util.Helper;
 
 public class ReceptionistFactory {
-    public static Receptionist buildReceptionist(double hourlyRate, boolean[] workingHours, int employeeId, String lastName, String firstName, boolean onRestDay, String bankDetails){
+    public static Receptionist buildReceptionist(int employeeId, String lastName, String firstName, boolean onRestDay, String bankDetails, double hourlyRate, boolean[] workingHours) {
         if(Helper.isNullOrEmpty(String.valueOf(hourlyRate)) || hourlyRate > 15.00) {
             System.out.println("hourly rate is missing or incorrect");
             return null;
@@ -43,7 +43,7 @@ public class ReceptionistFactory {
                 .build();
     }
 
-    public static Receptionist buildReceptionist(double hourlyRate, boolean[] workingHours, String lastName, String firstName, boolean onRestDay, String bankDetails){
+    public static Receptionist buildReceptionist(String lastName, String firstName, boolean onRestDay, String bankDetails, double hourlyRate, boolean[] workingHours) {
         if (Helper.isNullOrEmpty(String.valueOf(hourlyRate)) || hourlyRate > 15.00) {
             System.out.println("hourly rate is missing");
             return null;

@@ -5,7 +5,7 @@ import fr.efrei.domain.Employee;
 import fr.efrei.util.Helper;
 
 public class CoachFactory {
-    public static Coach buildCoach(String sportType, double hourlyRate, boolean[] availability, int employeeId, String lastName, String firstName, boolean onRestDay, String bankDetails){
+    public static Coach buildCoach(int employeeId, String lastName, String firstName, boolean onRestDay, String bankDetails, String sportType, double hourlyRate, boolean[] availability) {
         if (Helper.isNullOrEmpty(sportType)) {
             System.out.println("sport type is missing");
             return null;
@@ -49,7 +49,7 @@ public class CoachFactory {
                 .build();
     }
 
-    public static Coach buildCoach(String sportType, double hourlyRate, boolean[] availability, String lastName, String firstName, boolean onRestDay, String bankDetails) {
+    public static Coach buildCoach(String lastName, String firstName, boolean onRestDay, String bankDetails, String sportType, double hourlyRate, boolean[] availability) {
         if (Helper.isNullOrEmpty(String.valueOf(sportType))) {
             System.out.println("sport is missing");
             return null;

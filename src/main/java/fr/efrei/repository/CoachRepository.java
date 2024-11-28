@@ -11,12 +11,6 @@ public class CoachRepository implements ICoachRepository {
     private CoachRepository(){
         coachList = new ArrayList<>();
     }
-    public static ICoachRepository getRepository(){
-        if (repository == null){
-            repository = new CoachRepository();
-        }
-        return repository;
-    }
 
     @Override
     public Coach create(Coach c) {
