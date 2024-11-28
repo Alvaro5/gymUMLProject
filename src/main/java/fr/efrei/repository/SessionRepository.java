@@ -63,4 +63,14 @@ public class SessionRepository implements ISessionRepository {
     public List<Session> getAll() {
         return sessionList;
     }
+
+    @Override
+    public boolean checkSessionAvailability(Integer sessionID) {
+        Session sessionToCheck = read(sessionID);
+        if (sessionToCheck == null || sessionToCheck.isBooked()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

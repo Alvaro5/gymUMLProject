@@ -14,6 +14,7 @@ public class Session {
     private Receptionist receptionist;
     private List<Member> listMembers = new ArrayList<>(MAX_CAPACITY);
 
+
     public enum SportType {
         SPINNING, RUNNING, YOGA, WEIGHTLIFTING, BOXING, PERSONALIZED
     }
@@ -56,6 +57,12 @@ public class Session {
 
     public List<Member> getListMembers() {
         return listMembers;
+    }
+
+    public boolean isBooked() {
+        if (listMembers.size() == 5)
+            return true;
+        return false;
     }
 
     @Override
