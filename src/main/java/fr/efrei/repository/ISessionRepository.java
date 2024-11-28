@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ISessionRepository extends IRepository<Session, Integer> {
     List<Session> getAll();
+
+    boolean checkSessionAvailability(Integer sessionID);
 }
