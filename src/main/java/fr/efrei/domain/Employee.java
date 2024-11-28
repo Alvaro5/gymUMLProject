@@ -7,9 +7,9 @@ public abstract class Employee {
     private boolean onRestDay;
     private String bankDetails;
 
-    public Employee() {}
+    protected Employee() {}
 
-    public Employee(EmployeeBuilder<?> builder) {
+    protected Employee(EmployeeBuilder<?> builder) {
         this.employeeId = builder.employeeId;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;

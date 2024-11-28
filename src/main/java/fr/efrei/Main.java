@@ -4,8 +4,7 @@ import fr.efrei.domain.*;
 import fr.efrei.factory.CoachFactory;
 import fr.efrei.factory.MemberFactory;
 import fr.efrei.factory.ReceptionistFactory;
-import fr.efrei.repository.IMemberRepository;
-import fr.efrei.repository.MemberRepository;
+import fr.efrei.repository.*;
 import fr.efrei.views.MemberView;
 
 import java.time.LocalDate;
@@ -89,15 +88,65 @@ public class Main {
 
         // Testing of Coach and Receptionist factory classes
         boolean[] availability = new boolean[]{true, true, true, true, true};
-        Coach coach2 = CoachFactory.buildCoach("weightlifting", 28, availability, 5, "Serero", "Alvaro", true, "GQKJSFGKKJFGUKQFSGFKJQSGKJFG");
+        Coach coach2 = CoachFactory.buildCoach(5, "Serero", "Alvaro", true, "FBSDFBDBFVDFSVDSFEZ", "weightlifting", 28.00, availability);
         System.out.println(coach2);
 
         boolean[] workingHours = new boolean[]{true, true, true, true, true};
-        Receptionist receptionist2 = ReceptionistFactory.buildReceptionist(15, workingHours, 6, "Serero", "Alvaro", true, "SVDUYQVSDUYDVYUQSVDUYDVS");
+        Receptionist receptionist2 = ReceptionistFactory.buildReceptionist(6, "Serero", "Alvaro", true, "SVDUYQVSDUYDVYUQSVDUYDVS", 15.00, workingHours);
         System.out.println(receptionist2);
 
-        // Testing of the Session class
+        // Testing of Coach and Receptionist repository classes
+        ICoachRepository coachRepository = CoachRepository.getRepository();
+        IReceptionistRepository receptionistRepository = ReceptionistRepository.getRepository();
 
+        // Test create method
+        System.out.println("Creating Receptionists...");
+        receptionistRepository.create(receptionist);
+        receptionistRepository.create(receptionist2);
+
+        System.out.println("Creating Coaches...");
+        coachRepository.create(coach);
+        coachRepository.create(coach2);
+
+        // Test read method
+        System.out.println();
+        System.out.println("Reading receptionist with ID 6");
+        System.out.println(receptionistRepository.read(6));
+
+        System.out.println();
+        System.out.println("Reading coach with ID 5");
+        System.out.println(coachRepository.read(5));
+
+        // Test update method
+        System.out.println();
+        System.out.println("Updating Receptionist with ID 6:");
+        Receptionist updatedReceptionist = ReceptionistFactory.buildReceptionist(6, "Smith", "Alice", true, "FKDHJBGSIFUBZFIUZAG", 13.00, workingHours);
+        receptionistRepository.update(updatedReceptionist);
+        System.out.println(receptionistRepository.read(6));
+
+        System.out.println();
+        System.out.println("Updating Coach with ID 5:");
+        Coach updatedCoach = CoachFactory.buildCoach(5, "Smith", "William", false, "FEZIUDBIEZBDINEZJKDNKAZBDKU", "running", 26.00, workingHours);
+        coachRepository.update(updatedCoach);
+        System.out.println(coachRepository.read(5));
+
+        // Test delete method
+        System.out.println("\nDeleting Receptionist with ID 6:");
+        boolean receptionistDelete = receptionistRepository.delete(6);
+        System.out.println(receptionistDelete);
+
+        System.out.println("\nDeleting Coach with ID 5:");
+        boolean coachDelete = coachRepository.delete(5);
+        System.out.println(coachDelete);
+
+        // Test getAll method
+        System.out.println("\nPrinting all Receptionists:");
+        System.out.println(receptionistRepository.getAll());
+
+        System.out.println("\nPrinting all Coaches:");
+        System.out.println(coachRepository.getAll());
+
+        // Testing of the Session class
         List<Member> members = new ArrayList<>();
         members.add(member1);
         members.add(member2);
@@ -112,10 +161,7 @@ public class Main {
                 .setListMembers(members)
                 .build();
 
-        System.out.println(session);
-
-
-
+        System.out.println("\n" + session);
 
         /*// Main menu
 

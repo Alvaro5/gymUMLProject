@@ -11,7 +11,8 @@ public class ReceptionistRepository implements IReceptionistRepository {
     private ReceptionistRepository(){
         receptionistList = new ArrayList<>();
     }
-    public static IReceptionistRepository getReceptionist(){
+
+    public static IReceptionistRepository getRepository() {
         if (repository == null){
             repository = new ReceptionistRepository();
         }
