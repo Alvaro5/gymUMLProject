@@ -43,7 +43,7 @@ public class SessionFactory {
         }
 
         return new Session.Builder().setSessionID(sessionID)
-                .setSportType(Session.SportType.valueOf(sportType))
+                .setSportType(Session.SportType.valueOf(sportType.toUpperCase()))
                 .setTime(time)
                 .setDate(date)
                 .setCoach(coach)
@@ -86,7 +86,7 @@ public class SessionFactory {
         int sessionID = Helper.generateId();
 
         return new Session.Builder().setSessionID(sessionID)
-                .setSportType(Session.SportType.valueOf(sportType))
+                .setSportType(Session.SportType.valueOf(sportType.toUpperCase()))
                 .setTime(time)
                 .setDate(date)
                 .setCoach(coach)

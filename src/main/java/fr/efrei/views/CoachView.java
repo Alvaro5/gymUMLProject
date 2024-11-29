@@ -42,7 +42,7 @@ public class CoachView {
         sportType = sc.next();
         System.out.println("Hourly rate: ");
         hourlyRate = Double.parseDouble(sc.next());
-        System.out.println("Avaibility: ");
+        System.out.println("Availability: ");
         for (boolean b : availability = new boolean[] { Boolean.parseBoolean(sc.next()) });
 
         Coach coach = CoachFactory.buildCoach(employeeId, lastName, firstName, onRestDay, bankDetails, sportType, hourlyRate, availability);

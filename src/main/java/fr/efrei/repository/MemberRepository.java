@@ -1,7 +1,6 @@
 package fr.efrei.repository;
 
 import fr.efrei.domain.*;
-
 import java.util.ArrayList;
 import java.util.List;
 

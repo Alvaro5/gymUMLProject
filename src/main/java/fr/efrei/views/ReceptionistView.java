@@ -42,7 +42,7 @@ public class ReceptionistView {
         System.out.println("Working hours: ");
         for (boolean b : workingHours = new boolean[] { Boolean.parseBoolean(sc.next()) });
 
-        Receptionist receptionist = ReceptionistFactory.buildReceptionist(hourlyRate,workingHours, employeeId,lastName, firstName, onRestDay, bankDetails);
+        Receptionist receptionist = ReceptionistFactory.buildReceptionist(employeeId, lastName, firstName, onRestDay, bankDetails, hourlyRate, workingHours);
         if (receptionist != null) {
             receptionistRepository.create(receptionist);
         } else {
