@@ -6,7 +6,7 @@ import fr.efrei.repository.*;
 import java.time.*;
 import java.util.*;
 
-public class Main {
+public class Testing {
     public static void main(String[] args) {
 
         // Testing of the Member class

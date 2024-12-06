@@ -4,6 +4,7 @@ import fr.efrei.repository.*;
 import fr.efrei.views.CoachView;
 import fr.efrei.views.MemberView;
 import fr.efrei.views.ReceptionistView;
+import fr.efrei.views.SessionView;
 
 import java.util.Scanner;
 
@@ -20,6 +21,9 @@ public class MainMenu {
 
         IReceptionistRepository receptionistRep = ReceptionistRepository.getRepository();
         ReceptionistView receptionistView = new ReceptionistView(receptionistRep);
+
+        ISessionRepository sessionRep = SessionRepository.getRepository();
+        SessionView sessionView = new SessionView(sessionRep);
 
         String choice;
         Scanner sc = new Scanner(System.in);
@@ -38,7 +42,7 @@ public class MainMenu {
                 case "1": memberView.memberMenu(); break;
                 case "2": coachView.coachMenu(); break;
                 case "3": receptionistView.receptionistMenu(); break;
-                case "4": break;
+                case "4": sessionView.sessionMenu(); break;
                 case "5": break;
                 default:
                     System.out.println("Invalid option");
