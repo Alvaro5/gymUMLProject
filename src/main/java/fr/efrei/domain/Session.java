@@ -67,15 +67,19 @@ public class Session {
 
     @Override
     public String toString() {
-        return "Session{" +
-                "sessionID=" + sessionID +
-                ", sportType=" + sportType +
-                ", date=" + date +
-                ", time=" + time +
-                ", coach=" + coach +
-                ", receptionist=" + receptionist +
-                ", listMembers=" + listMembers +
-                '}';
+        return String.format(
+                "Session Details:\n" + "- Session ID: %d\n" + "- Sport Type: %s\n" + "- Date: %s\n" + "- Time: %s\n" + "- Coach: %s\n" + "- Receptionist: %s\n" + "- Members (%d/%d): %s\n" + "- Is Fully Booked: %s",
+                sessionID,
+                sportType != null ? sportType.name() : "Not Set",
+                date != null ? date.toString() : "Not Set",
+                time != null ? time.toString() : "Not Set",
+                coach != null ? coach.toString() : "None",
+                receptionist != null ? receptionist.toString() : "None",
+                listMembers.size(),
+                MAX_CAPACITY,
+                listMembers.isEmpty() ? "No Members" : listMembers.toString(),
+                isBooked() ? "Yes" : "No"
+        );
     }
 
     public static class Builder{

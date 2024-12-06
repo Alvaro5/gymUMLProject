@@ -52,12 +52,13 @@ public class Membership {
 
     @Override
     public String toString() {
-        return "Membership{" +
-                "membershipStatus=" + membershipStatus +
-                ", paymentRate=" + paymentRate +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                '}';
+        return String.format(
+                "Membership Details:\n" + "- Status: %s\n" + "- Payment Rate: %s\n" + "- Start Date: %s\n" + "- End Date: %s",
+                membershipStatus != null ? membershipStatus : "Not Set",
+                paymentRate != null ? paymentRate : "Not Set",
+                startDate != null ? startDate.toString() : "Not Set",
+                endDate != null ? endDate.toString() : "Not Set"
+        );
     }
 
     public static class Builder {

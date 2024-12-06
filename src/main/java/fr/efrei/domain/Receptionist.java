@@ -27,10 +27,12 @@ public class Receptionist extends Employee {
 
     @Override
     public String toString() {
-        return super.toString() + "Receptionist{" +
-                "hourlyRate=" + hourlyRate +
-                ", workingHours=" + Arrays.toString(workingHours) +
-                '}';
+        return String.format(
+                "Receptionist Details:\n" + "%s" + "- Hourly Rate: %.2f\n" + "- Working Hours: %s",
+                super.toString(),
+                hourlyRate,
+                Arrays.toString(workingHours)
+        );
     }
 
     public static class ReceptionistBuilder extends Employee.EmployeeBuilder<ReceptionistBuilder> {

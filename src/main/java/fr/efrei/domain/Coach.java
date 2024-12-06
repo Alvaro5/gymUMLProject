@@ -35,11 +35,13 @@ public class Coach extends Employee{
 
     @Override
     public String toString() {
-        return super.toString() + "Coach{" +
-                "sportType='" + sportType + '\'' +
-                ", workingHours='" + hourlyRate + '\'' +
-                ", availability=" + Arrays.toString(availability) +
-                '}';
+        return String.format(
+                "Coach Details:\n" + "%s" + "- Sport Speciality: %s\n" + "- Hourly Rate: %.2f\n" + "- Availability: %s",
+                super.toString(),
+                sportType != null ? sportType.name() : "Not Set",
+                hourlyRate,
+                Arrays.toString(availability)
+        );
     }
 
     public static class CoachBuilder extends Employee.EmployeeBuilder<CoachBuilder>{

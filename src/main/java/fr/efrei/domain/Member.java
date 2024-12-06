@@ -57,15 +57,16 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member{" +
-                "memberID=" + memberID +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", membershipStatus=" + membership +
-                '}';
+        return String.format(
+                "Member Details:\n" + "- ID: %d\n" + "- Name: %s %s\n" + "- Age: %d\n" + "- Email: %s\n" + "- Phone: %s\n" + "- Membership: %s",
+                memberID,
+                firstName,
+                lastName,
+                age,
+                email,
+                phoneNumber,
+                membership != null ? membership.toString() : "None"
+        );
     }
 
     public static class Builder {

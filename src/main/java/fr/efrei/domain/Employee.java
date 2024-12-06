@@ -39,13 +39,14 @@ public abstract class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + employeeId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", onRestDay=" + onRestDay +
-                ", bankDetails='" + bankDetails + '\'' +
-                '}';
+        return String.format(
+                "Employee Details:\n" + "- Employee ID: %d\n" + "- First Name: %s\n" + "- Last Name: %s\n" + "- On Rest Day: %s\n" + "- Bank Details: %s",
+                employeeId,
+                firstName != null && !firstName.isEmpty() ? firstName : "Not Set",
+                lastName != null && !lastName.isEmpty() ? lastName : "Not Set",
+                onRestDay ? "Yes" : "No",
+                bankDetails != null && !bankDetails.isEmpty() ? bankDetails : "Not Provided"
+        );
     }
 
     public static abstract class EmployeeBuilder<T extends EmployeeBuilder<T>>{
