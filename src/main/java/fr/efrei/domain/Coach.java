@@ -6,7 +6,7 @@ public class Coach extends Employee{
 
     private SportType sportType ;
     private double hourlyRate;
-    private static final int MAX_WORKING_HOURS = 10;
+    public static final int MAX_WORKING_HOURS = 10;
     private boolean[] availability = new boolean[MAX_WORKING_HOURS];
     public enum SportType {
         RUNNING, SPINNING, YOGA, WEIGHTLIFTING, BOXING, PERSONALIZED

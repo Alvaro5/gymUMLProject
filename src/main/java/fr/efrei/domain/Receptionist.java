@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 
 public class Receptionist extends Employee {
-    private static final int MAX_WORKING_HOURS = 8;
+    public static final int MAX_WORKING_HOURS = 8;
     private double hourlyRate;
     private boolean[] workingHours = new boolean[MAX_WORKING_HOURS];
 
