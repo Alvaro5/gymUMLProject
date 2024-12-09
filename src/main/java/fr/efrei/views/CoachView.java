@@ -174,9 +174,13 @@ public class CoachView {
     public static void showCoaches() {
         List<Coach> coachList = coachRepository.getAll();
 
-        System.out.println("\nList of Coaches: ");
-        for (Coach coach : coachList) {
-            System.out.println(coach);
+        if (!coachList.isEmpty()) {
+            System.out.println("\nList of Coaches: ");
+            for (Coach coach : coachList) {
+                System.out.println(coach);
+            }
+        } else {
+            System.out.println("\nList of Coaches is empty!");
         }
     }
 
