@@ -29,22 +29,22 @@ public class MemberView {
         System.out.println("\nPlease enter the following information...");
         System.out.print("Member ID: ");
         id = sc.nextInt();
+        sc.nextLine();
         System.out.print("Member Age: ");
         age = sc.nextInt();
-        System.out.print("Member First Name: ");
-        firstName = sc.next();
-        System.out.print("Member Last Name: ");
-        lastName = sc.next();
-        System.out.print("Member Email: ");
-        email = sc.next();
-        System.out.print("Member Phone Number: ");
-        phoneNumber = sc.next();
-        System.out.print("Membership Status: ");
-        membershipStatus = sc.next();
-        System.out.print("Payment Rate: ");
-        paymentRate = sc.next();
-
         sc.nextLine();
+        System.out.print("Member First Name: ");
+        firstName = sc.nextLine();
+        System.out.print("Member Last Name: ");
+        lastName = sc.nextLine();
+        System.out.print("Member Email: ");
+        email = sc.nextLine();
+        System.out.print("Member Phone Number: ");
+        phoneNumber = sc.nextLine();
+        System.out.print("Membership Status: ");
+        membershipStatus = sc.nextLine();
+        System.out.print("Payment Rate: ");
+        paymentRate = sc.nextLine();
 
         while (true) {
             try {
@@ -94,91 +94,103 @@ public class MemberView {
     }
 
     public static void updateMember() {
-        // Prompt the user to enter the ID of the member to update
         Scanner sc = new Scanner(System.in);
         System.out.println("\nEnter Member ID: ");
         int id = sc.nextInt();
 
-        // Retrieve the member having the given ID
+        // Retrieve the member by ID
         Member currentMember = memberRepository.read(id);
-        Membership currentMembership = currentMember.getMembership();
 
-        if (currentMember != null) {
-            // Show current member details
-            System.out.println("\nCurrent Member details:");
-            System.out.println(currentMember);
-
-            // Input new member details
-            System.out.println("\nEnter new details (leave blank to keep current value):");
-            sc.nextLine(); // Consume leftover newline
-
-            System.out.println("First Name (" + currentMember.getFirstName() + "): ");
-            String firstName = sc.nextLine();
-            if (firstName.isEmpty()) {
-                firstName = currentMember.getFirstName();
-            }
-
-            System.out.println("Last Name (" + currentMember.getLastName() + "): ");
-            String lastName = sc.nextLine();
-            if (lastName.isEmpty()) {
-                lastName = currentMember.getLastName();
-            }
-
-            System.out.println("Age (" + currentMember.getAge() + "): ");
-            String ageInput = sc.nextLine();
-            int age = ageInput.isEmpty() ? currentMember.getAge() : Integer.parseInt(ageInput);
-
-            System.out.println("Email (" + currentMember.getEmail() + "): ");
-            String email = sc.nextLine();
-            if (email.isEmpty()) {
-                email = currentMember.getEmail();
-            }
-
-            System.out.println("Phone Number (" + currentMember.getPhoneNumber() + "): ");
-            String phoneNumber = sc.nextLine();
-            if (phoneNumber.isEmpty()) {
-                phoneNumber = currentMember.getPhoneNumber();
-            }
-
-            System.out.println("Membership Status (" + currentMembership.getMembershipStatus() + "): ");
-            String membershipStatus = sc.nextLine();
-            if (membershipStatus.isEmpty()) {
-                membershipStatus = String.valueOf(currentMembership.getMembershipStatus());
-            }
-
-            System.out.println("Payment Rate (" + currentMembership.getPaymentRate() + "): ");
-            String paymentRate = sc.nextLine();
-            if (paymentRate.isEmpty()) {
-                paymentRate = String.valueOf(currentMembership.getPaymentRate());
-            }
-
-            System.out.println("Membership Start Date (" + currentMembership.getStartDate() + "): ");
-            String startDateInput = sc.nextLine();
-            LocalDate startDate = startDateInput.isEmpty() ? currentMembership.getStartDate() : LocalDate.parse(startDateInput);
-
-            System.out.println("Membership End Date (" + currentMembership.getEndDate() + "): ");
-            String endDateInput = sc.nextLine();
-            LocalDate endDate = endDateInput.isEmpty() ? currentMembership.getEndDate() : LocalDate.parse(endDateInput);
-
-            // Create the updated member
-            Member newMember = MemberFactory.buildMember(id, firstName, lastName, age, email, phoneNumber, membershipStatus, paymentRate, startDate, endDate);
-
-            // Update repository with updated member
-            Member result = memberRepository.update(newMember);
-
-            // Check member update
-            if (result != null) {
-                System.out.println("\nMember updated!");
-                System.out.println(result);
-            } else {
-                System.out.println("\nMember not updated!");
-            }
-        } else {
+        if (currentMember == null) {
             System.out.println("\nMember not found!");
+            return;
         }
 
+        Membership currentMembership = currentMember.getMembership();
 
+        System.out.println("\nCurrent Member details:");
+        System.out.println(currentMember);
 
+        // Input new details, preserving existing values when no input is given
+        sc.nextLine(); // Consume the newline character
+
+        System.out.print("First Name (" + currentMember.getFirstName() + "): ");
+        String firstName = sc.nextLine();
+        firstName = firstName.isEmpty() ? currentMember.getFirstName() : firstName;
+
+        System.out.print("Last Name (" + currentMember.getLastName() + "): ");
+        String lastName = sc.nextLine();
+        lastName = lastName.isEmpty() ? currentMember.getLastName() : lastName;
+
+        System.out.print("Age (" + currentMember.getAge() + "): ");
+        String ageInput = sc.nextLine();
+        int age = ageInput.isEmpty() ? currentMember.getAge() : Integer.parseInt(ageInput);
+
+        System.out.print("Email (" + currentMember.getEmail() + "): ");
+        String email = sc.nextLine();
+        email = email.isEmpty() ? currentMember.getEmail() : email;
+
+        System.out.print("Phone Number (" + currentMember.getPhoneNumber() + "): ");
+        String phoneNumber = sc.nextLine();
+        phoneNumber = phoneNumber.isEmpty() ? currentMember.getPhoneNumber() : phoneNumber;
+
+        System.out.print("Membership Status (" + currentMembership.getMembershipStatus() + "): ");
+        String membershipStatus = sc.nextLine();
+        membershipStatus = membershipStatus.isEmpty() ? currentMembership.getMembershipStatus().name() : membershipStatus;
+
+        System.out.print("Payment Rate (" + currentMembership.getPaymentRate() + "): ");
+        String paymentRate = sc.nextLine();
+        paymentRate = paymentRate.isEmpty() ? currentMembership.getPaymentRate().name() : paymentRate;
+
+        LocalDate startDate;
+        while (true) {
+            System.out.print("Membership Start Date (" + currentMembership.getStartDate() + "): ");
+            String startDateInput = sc.nextLine();
+            if (startDateInput.isEmpty()) {
+                startDate = currentMembership.getStartDate();
+                break;
+            }
+            try {
+                startDate = LocalDate.parse(startDateInput);
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid date format. Try again.");
+            }
+        }
+
+        LocalDate endDate;
+        while (true) {
+            System.out.print("Membership End Date (" + currentMembership.getEndDate() + "): ");
+            String endDateInput = sc.nextLine();
+            if (endDateInput.isEmpty()) {
+                endDate = currentMembership.getEndDate();
+                break;
+            }
+            try {
+                endDate = LocalDate.parse(endDateInput);
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid date format. Try again.");
+            }
+        }
+
+        // Build updated member and update repository
+        Member updatedMember = MemberFactory.buildMember(
+                id, firstName, lastName, age, email, phoneNumber, membershipStatus, paymentRate, startDate, endDate
+        );
+
+        if (updatedMember == null) {
+            System.out.println("\nFailed to update member. Invalid data provided.");
+            return;
+        }
+
+        Member result = memberRepository.update(updatedMember);
+        if (result != null) {
+            System.out.println("\nMember updated!");
+            System.out.println(result);
+        } else {
+            System.out.println("\nMember not updated!");
+        }
     }
 
     public static void deleteMember() {
