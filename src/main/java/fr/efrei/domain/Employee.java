@@ -40,7 +40,7 @@ public abstract class Employee {
     @Override
     public String toString() {
         return String.format(
-                "Employee Details:\n" + "- Employee ID: %d\n" + "- First Name: %s\n" + "- Last Name: %s\n" + "- On Rest Day: %s\n" + "- Bank Details: %s",
+                "- Employee ID: %d\n" + "- First Name: %s\n" + "- Last Name: %s\n" + "- On Rest Day: %s\n" + "- Bank Details: %s\n",
                 employeeId,
                 firstName != null && !firstName.isEmpty() ? firstName : "Not Set",
                 lastName != null && !lastName.isEmpty() ? lastName : "Not Set",
