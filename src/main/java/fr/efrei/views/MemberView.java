@@ -217,7 +217,7 @@ public class MemberView {
             System.out.println("3. Update Member");
             System.out.println("4. Delete Member");
             System.out.println("5. Show all Members");
-            System.out.println("6. Exit");
+            System.out.println("6. Exit\n");
             choice = sc.nextLine();
 
             switch (choice) {

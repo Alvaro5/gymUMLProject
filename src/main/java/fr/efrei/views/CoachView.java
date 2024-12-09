@@ -23,16 +23,16 @@ public class CoachView {
         String lastName, firstName, bankDetails, sportType;
         boolean onRestDay;
         double hourlyRate;
-        boolean[] availability = new boolean[10];
+        boolean[] availability = new boolean[Coach.MAX_WORKING_HOURS];
 
         System.out.println("\nPlease enter the following information.");
         System.out.println("Employee ID: ");
         employeeId = sc.nextInt();
-        System.out.println("Employee Last Name: ");
-        lastName = sc.next();
         System.out.println("Employee First Name: ");
         firstName = sc.next();
-        System.out.println("On rest day (yes or no): ");
+        System.out.println("Employee Last Name: ");
+        lastName = sc.next();
+        System.out.println("On rest day (true or false): ");
         onRestDay = Boolean.parseBoolean(sc.next());
         System.out.println("Bank details: ");
         bankDetails = sc.next();
@@ -195,7 +195,7 @@ public class CoachView {
             System.out.println("3. Update Coach");
             System.out.println("4. Delete Coach");
             System.out.println("5. Show all Coaches");
-            System.out.println("6. Exit");
+            System.out.println("6. Exit\n");
             choice = sc.nextLine();
 
             switch (choice) {
