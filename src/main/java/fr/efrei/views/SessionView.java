@@ -33,7 +33,7 @@ public class SessionView {
         System.out.println("\nPlease enter the following information...");
         System.out.println("Session ID: ");
         sessionId = sc.nextInt();
-        System.out.println("Sport type: ");
+        System.out.println("Sport type (SPINNING, RUNNING, YOGA, WEIGHTLIFTING, BOXING or PERSONALIZED): ");
         sportType = sc.next();
 
         sc.nextLine();
