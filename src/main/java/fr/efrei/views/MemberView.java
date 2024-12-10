@@ -41,9 +41,9 @@ public class MemberView {
         email = sc.nextLine();
         System.out.print("Member Phone Number: ");
         phoneNumber = sc.nextLine();
-        System.out.print("Membership Status: ");
+        System.out.print("Membership Status (ACTIVE, SUSPENDED, PENDING, INACTIVE, EXPIRED or CANCELLED): ");
         membershipStatus = sc.nextLine();
-        System.out.print("Payment Rate: ");
+        System.out.print("Payment Rate (DAILY, MONTHLY or YEARLY): ");
         paymentRate = sc.nextLine();
 
         while (true) {
